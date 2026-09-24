@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoSpace - La nueva era</title>
+    <!-- Cargando Tailwind CSS para la estructura general -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        /* Importando fuentes retro y divertidas */
+        @import url('https://fonts.googleapis.com/css2?family=VT323&family=Comic+Neue:wght@700&display=swap');
+
+        /* =========================================
+           SECCIÓN CSS: ESTILOS PERSONALIZADOS
+           ========================================= */
+        :root {
+            --neon-pink: #ff00ff;
+            --neon-blue: #00ffff;
+            --neon-green: #39ff14;
+            --bg-dark: #0a0a1a;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(255, 0, 255, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(0, 255, 255, 0.15), transparent 25%);
+            background-attachment: fixed;
+            color: #ffffff;
+            font-family: 'Comic Neue', cursive, sans-serif;
+            cursor: crosshair; /* Cursor clásico retro */
+        }
+
+        /* Utilidades de Texto Neón */
+        .neon-text-pink { text-shadow: 0 0 5px #fff, 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink); }
+        .neon-text-blue { text-shadow: 0 0 5px #fff, 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue); }
+        
+        /* Utilidades de Bordes Neón */
+        .neon-border-pink { 
+            border: 2px solid var(--neon-pink);
+            box-shadow: 0 0 10px var(--neon-pink), inset 0 0 10px var(--neon-pink);
+        }
+        .neon-border-blue { 
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 10px var(--neon-blue), inset 0 0 10px var(--neon-blue);
+        }
+
+        /* Contenedores estilo MySpace translúcidos */
+        .y2k-box {
+            background: rgba(20, 20, 40, 0.8);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+
+        /* Animaciones Personalizadas */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .blink { animation: blink 1s step-end infinite; }
+
+        @keyframes equalizer {
+            0% { height: 5px; }
+            50% { height: 20px; }
+            100% { height: 5px; }
+        }
+        .bar { 
+            width: 4px; 
+            background: var(--neon-green); 
+            display: inline-block; 
+            margin: 0 1px; 
+            animation: equalizer 0.5s infinite ease-in-out; 
+        }
+        .bar:nth-child(2) { animation-delay: 0.1s; }
+        .bar:nth-child(3) { animation-delay: 0.2s; }
+        .bar:nth-child(4) { animation-delay: 0.3s; }
+        .bar.paused { animation-play-state: paused; height: 5px; }
+
+        /* Estilo de Scrollbar Y2K Perra */
+        ::-webkit-scrollbar { width: 12px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); border-left: 1px dashed var(--neon-pink); }
+        ::-webkit-scrollbar-thumb { background: var(--neon-pink); border: 2px solid var(--bg-dark); border-radius: 6px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--neon-blue); }
+    </style>
+</head>
+<body class="min-h-screen pb-10">
+
+    <!-- =========================================
+         SECCIÓN HTML: ESTRUCTURA DE LA PÁGINA
+         ========================================= -->
+
+    <!-- Barra de Navegación -->
+    <nav class="w-full bg-black border-b-2 border-pink-500 shadow-[0_0_15px_#ff00ff] sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center">
+            <h1 class="text-4xl font-bold text-white neon-text-pink tracking-widest font-['VT323']">NeoSpace</h1>
+            <ul class="flex space-x-4 mt-3 md:mt-0 text-sm md:text-base text-cyan-300 font-bold">
+                <li><a href="#" class="hover:text-pink-400 hover:underline decoration-wavy transition">Inicio</a></li>
+                <li><a href="#" class="hover:text-pink-400 hover:underline decoration-wavy transition">Buscar</a></li>
+                <li><a href="#" class="hover:text-pink-400 hover:underline decoration-wavy transition">Correo (1)</a></li>
+                <li><a href="#" class="hover:text-pink-400 hover:underline decoration-wavy transition">Música</a></li>
+                <li><a href="#" class="text-pink-400 border-b-2 border-pink-400 pb-1">Mi Perfil</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Marquesina (Marquee) - Un clásico de la web 1.0 -->
+    <div class="w-full bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 overflow-hidden py-1 border-b-2 border-cyan-400 shadow-[0_0_10px_#00ffff]">
+        <marquee behavior="scroll" direction="left" class="text-white font-bold tracking-widest text-lg">
+            ✨💖 BIENVENIDO A MI PERFIL OFICIAL ~ NO OLVIDES DEJAR UN COMENTARIO ~ AÑÁDEME A TU TOP 8 💖✨
+        </marquee>
+    </div>
+
+    <!-- Contenedor Principal -->
+    <main class="max-w-6xl mx-auto mt-8 px-4 grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- COLUMNA IZQUIERDA (Perfil) -->
+        <aside class="space-y-6">
+            
+            <!-- Tarjeta de Perfil -->
+            <div class="y2k-box neon-border-pink text-center">
+                <h2 class="text-2xl font-bold mb-4 text-pink-400">Tóxica_Y2K 💋</h2>
+                <div class="relative w-48 h-48 mx-auto mb-4">
+                    <img src="https://placehold.co/200x200/ff00ff/ffffff?text=Perfil+Pic" alt="Foto de Perfil" class="w-full h-full object-cover rounded-full border-4 border-cyan-400 shadow-[0_0_15px_#00ffff]">
+                    <span class="absolute bottom-2 right-2 bg-green-500 w-5 h-5 rounded-full border-2 border-black shadow-[0_0_8px_#39ff14] blink" title="En línea"></span>
+                </div>
+                <p class="text-lg">♀ 22 Años</p>
+                <p class="text-cyan-300">📍 Cyber-Ciudad, Neón</p>
+                <div class="mt-4 p-2 bg-black/50 rounded border border-dashed border-pink-500">
+                    <p class="text-sm font-bold">Estado de ánimo:</p>
+                    <p class="text-xl">✨ Fabulosa y Peligrosa ✨</p>
+                </div>
+            </div>
+
+            <!-- Reproductor de Música -->
+            <div class="y2k-box neon-border-blue bg-black/80">
+                <h3 class="text-xl text-cyan-400 mb-2 border-b border-cyan-400 pb-1">🎶 Mi Playlist</h3>
+                <div class="flex items-center space-x-3 mb-3">
+                    <div class="w-12 h-12 bg-gray-800 rounded flex items-center justify-center border border-pink-500">
+                        💿
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold text-pink-400">Track 01 - Eurodancer</p>
+                        <p class="text-xs text-gray-400">DJ Mangoo</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center justify-between mt-4">
+                    <button id="playBtn" class="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-400 hover:to-purple-400 text-white px-4 py-1 rounded-full font-bold shadow-[0_0_10px_#ff00ff] transition active:scale-95">
+                        ▶ PLAY
+                    </button>
+                    <!-- Ecualizador animado -->
+                    <div id="equalizer" class="h-6 flex items-end">
+                        <div class="bar paused"></div>
+                        <div class="bar paused"></div>
+                        <div class="bar paused"></div>
+                        <div class="bar paused"></div>
+                    </div>
+                </div>
+                <div class="w-full bg-gray-800 h-2 mt-4 rounded-full overflow-hidden border border-gray-600">
+                    <div class="bg-cyan-400 w-1/3 h-full shadow-[0_0_8px_#00ffff]"></div>
+                </div>
+            </div>
+
+            <!-- Botones de Contacto -->
+            <div class="y2k-box border-2 border-purple-500 border-dashed">
+                <h3 class="text-xl text-purple-400 mb-3 text-center">Contacta Conmigo</h3>
+                <div class="grid grid-cols-2 gap-2 text-center text-sm">
+                    <button class="bg-black border border-cyan-400 p-2 hover:bg-cyan-900 transition">✉️ Mensaje</button>
+                    <button class="bg-black border border-pink-400 p-2 hover:bg-pink-900 transition">➕ Añadir</button>
+                    <button class="bg-black border border-yellow-400 p-2 hover:bg-yellow-900 transition col-span-2">⭐ A Favoritos</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- COLUMNA DERECHA (Contenido Principal) -->
+        <div class="md:col-span-2 space-y-6">
+            
+            <!-- Sección: Acerca de mi -->
+            <div class="y2k-box neon-border-pink">
+                <h2 class="text-3xl neon-text-pink mb-4 font-['VT323'] bg-black/50 p-2 rounded">🔥 Acerca de mí...</h2>
+                <div class="space-y-3 text-gray-200 leading-relaxed font-sans">
+                    <p>¡Holi! ✌️ Bienvenido a mi rincón en la web. Soy amante del <span class="text-pink-400 font-bold">glitter</span>, la música electrónica y trasnochar chateando por MSN.</p>
+                    <p>Si no estás en mi Top 8, no te lo tomes personal. 😉💅</p>
+                    <div class="p-3 mt-4 bg-purple-900/30 border-l-4 border-cyan-400">
+                        <strong class="text-cyan-300">Intereses:</strong> Diseño web, HTML, Fotolog, Ropa fosforescente, Ir al cibercafé.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección: Top 8 Amigos -->
+            <div class="y2k-box neon-border-blue">
+                <h2 class="text-3xl neon-text-blue mb-4 font-['VT323'] text-center">Mi Top 8 Amigos</h2>
+                <p class="text-center text-sm text-gray-400 mb-4">Tengo 4,320 amigos. ¡Tú podrías ser el siguiente!</p>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    <!-- Amigo 1 a 8 generados manualmente para el mockup -->
+                    <div class="text-center group cursor-pointer">
+                        <h4 class="text-pink-400 font-bold mb-1 group-hover:underline">Tom</h4>
+                        <img src="https://placehold.co/100x100/1e3a8a/ffffff?text=T" class="mx-auto rounded border-2 border-blue-500 group-hover:shadow-[0_0_10px_#00ffff] transition w-20 h-20 object-cover">
+                    </div>
+                    <div class="text-center group cursor-pointer">
+                        <h4 class="text-cyan-400 font-bold mb-1 group-hover:underline">Emo_Boyxx</h4>
+                        <img src="https://placehold.co/100x100/000000/ff00ff?text=EB" class="mx-auto rounded border-2 border-gray-600 group-hover:shadow-[0_0_10px_#ff00ff] transition w-20 h-20 object-cover">
+                    </div>
+                    <div class="text-center group cursor-pointer">
+                        <h4 class="text-yellow-400 font-bold mb-1 group-hover:underline">Sk8r_Girl</h4>
+                        <img src="https://placehold.co/100x100/eab308/000000?text=SG" class="mx-auto rounded border-2 border-yellow-500 group-hover:shadow-[0_0_10px_#eab308] transition w-20 h-20 object-cover">
+                    </div>
+                    <div class="text-center group cursor-pointer">
+                        <h4 class="text-green-400 font-bold mb-1 group-hover:underline">DJ_Neón</h4>
+                        <img src="https://placehold.co/100x100/39ff14/000000?text=DJ" class="mx-auto rounded border-2 border-green-500 group-hover:shadow-[0_0_10px_#39ff14] transition w-20 h-20 object-cover">
+                    </div>
+                    <div class="text-center group cursor-pointer">
+                        <h4 class="text-purple-400 font-bold mb-1 group-hover:underline">XxDarkxX</h4>
+                        <img src="https://placehold.co/100x100/581c87/ffffff?text=DX" class="mx-auto rounded border-2 border-purple-500 group-hover:shadow-[0_0_10px_#a855f7] transition w-20 h-20 object-cover">
+                    </div>
+                    <div class="text-center group cursor-pointer">
+                        <h4 class="text-pink-400 font-bold mb-1 group-hover:underline">BFF_4ever</h4>
+                        <img src="https://placehold.co/100x100/db2777/ffffff?text=BFF" class="mx-auto rounded border-2 border-pink-500 group-hover:shadow-[0_0_10px_#ff00ff] transition w-20 h-20 object-cover">
+                    </div>
+                    <div class="text-center group cursor-pointer">
+                        <h4 class="text-cyan-400 font-bold mb-1 group-hover:underline">CyberPunk</h4>
+                        <img src="https://placehold.co/100x100/0891b2/ffffff?text=CP" class="mx-auto rounded border-2 border-cyan-500 group-hover:shadow-[0_0_10px_#00ffff] transition w-20 h-20 object-cover">
+                    </div>
+                    <div class="text-center group cursor-pointer">
+                        <h4 class="text-red-400 font-bold mb-1 group-hover:underline">Vampireza</h4>
+                        <img src="https://placehold.co/100x100/991b1b/ffffff?text=V" class="mx-auto rounded border-2 border-red-500 group-hover:shadow-[0_0_10px_#ef4444] transition w-20 h-20 object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección: Muro de Comentarios (Blurbs) -->
+            <div class="y2k-box neon-border-pink">
+                <h2 class="text-3xl neon-text-pink mb-4 font-['VT323']">💬 Muro de Blurbs</h2>
+                
+                <!-- Formulario de nuevo comentario -->
+                <div class="bg-black/60 p-4 rounded mb-6 border border-gray-600">
+                    <h4 class="text-cyan-300 font-bold mb-2">Deja tu comentario para Tóxica_Y2K:</h4>
+                    <form id="commentForm" class="flex flex-col gap-2">
+                        <input type="text" id="nameInput" placeholder="Tu Nombre..." required class="bg-gray-900 border border-pink-500 text-white p-2 focus:outline-none focus:border-cyan-400 font-sans">
+                        <textarea id="msgInput" placeholder="Escribe aquí tu blurb..." required rows="3" class="bg-gray-900 border border-pink-500 text-white p-2 focus:outline-none focus:border-cyan-400 font-sans"></textarea>
+                        <button type="submit" class="bg-pink-600 hover:bg-pink-500 text-white font-bold py-2 px-4 rounded mt-2 border-2 border-black shadow-[2px_2px_0px_#00ffff] active:translate-y-1 active:shadow-none transition-all">
+                            Postear Comentario
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Lista donde se inyectan los comentarios con JS -->
+                <div id="commentsList" class="space-y-4">
+                    <!-- Comentario estático por defecto -->
+                    <div class="flex gap-4 bg-gray-900/80 p-3 rounded border-l-4 border-cyan-400">
+                        <img src="https://placehold.co/60x60/1e3a8a/ffffff?text=T" class="w-16 h-16 rounded object-cover">
+                        <div>
+                            <h5 class="font-bold text-pink-400">Tom <span class="text-xs text-gray-500">24 Sep, 10:42 PM</span></h5>
+                            <p class="text-gray-300 font-sans mt-1">¡Me encanta el nuevo layout! Súper perrísimo. Agrégame a tu top 8. 😎🔥</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- =========================================
+         SECCIÓN JAVASCRIPT: LÓGICA INTERACTIVA
+         ========================================= -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- LÓGICA DEL REPRODUCTOR DE MÚSICA ---
+            const playBtn = document.getElementById('playBtn');
+            const bars = document.querySelectorAll('.bar');
+            let isPlaying = false;
+
+            playBtn.addEventListener('click', () => {
+                isPlaying = !isPlaying;
+                if (isPlaying) {
+                    // Estado Reproduciendo
+                    playBtn.innerHTML = '⏸ PAUSE';
+                    playBtn.classList.replace('from-pink-500', 'from-cyan-500');
+                    playBtn.classList.replace('to-purple-500', 'to-blue-500');
+                    playBtn.classList.replace('shadow-[0_0_10px_#ff00ff]', 'shadow-[0_0_10px_#00ffff]');
+                    // Activar ecualizador
+                    bars.forEach(bar => bar.classList.remove('paused'));
+                } else {
+                    // Estado Pausado
+                    playBtn.innerHTML = '▶ PLAY';
+                    playBtn.classList.replace('from-cyan-500', 'from-pink-500');
+                    playBtn.classList.replace('to-blue-500', 'to-purple-500');
+                    playBtn.classList.replace('shadow-[0_0_10px_#00ffff]', 'shadow-[0_0_10px_#ff00ff]');
+                    // Pausar ecualizador
+                    bars.forEach(bar => bar.classList.add('paused'));
+                }
+            });
+
+            // --- LÓGICA DEL MURO DE COMENTARIOS ---
+            const commentForm = document.getElementById('commentForm');
+            const commentsList = document.getElementById('commentsList');
+
+            commentForm.addEventListener('submit', (e) => {
+                e.preventDefault(); // Evitamos recargar la página
+
+                const nameInput = document.getElementById('nameInput');
+                const msgInput = document.getElementById('msgInput');
+                
+                const name = nameInput.value.trim();
+                const msg = msgInput.value.trim();
+
+                if (name && msg) {
+                    // Formatear la fecha para dar toque realista
+                    const now = new Date();
+                    const dateStr = now.toLocaleDateString() + ', ' + now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+
+                    // Crear el contenedor del nuevo comentario
+                    const newComment = document.createElement('div');
+                    // Añadimos una clase de animación para que "brille" al aparecer
+                    newComment.className = 'flex gap-4 bg-gray-900/80 p-3 rounded border-l-4 border-pink-400 animate-pulse'; 
+                    
+                    // Asignar un avatar de color aleatorio para el usuario
+                    const colors = ['ff00ff', '00ffff', '39ff14', 'eab308'];
+                    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                    const initial = name.charAt(0).toUpperCase();
+
+                    // Construir el HTML interno del comentario
+                    newComment.innerHTML = `
+                        <img src="https://placehold.co/60x60/${randomColor}/000000?text=${initial}" class="w-16 h-16 rounded object-cover">
+                        <div class="w-full">
+                            <h5 class="font-bold text-cyan-400">${name} <span class="text-xs text-gray-500">${dateStr}</span></h5>
+                            <p class="text-gray-300 font-sans mt-1 break-words">${msg}</p>
+                        </div>
+                    `;
+
+                    // Insertar el nuevo comentario al principio de la lista
+                    commentsList.insertBefore(newComment, commentsList.firstChild);
+
+                    // Quitar la clase de animación después de 1 segundo para que quede normal
+                    setTimeout(() => newComment.classList.remove('animate-pulse'), 1000);
+
+                    // Limpiar campos del formulario
+                    nameInput.value = '';
+                    msgInput.value = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
